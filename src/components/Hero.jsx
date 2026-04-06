@@ -1,4 +1,5 @@
 import './Hero.css';
+import profileImg from '../assets/profile.png';
 
 const Hero = () => {
   return (
@@ -16,7 +17,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero-image">
-        <img src="/src/assets/profile.png" alt="Profile" />
+        <img src={profileImg} alt="Profile" />
       </div>
     </section>
   );
