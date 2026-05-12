@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Hero.css';
 import profileImg from '../assets/profile.png';
 
@@ -5,15 +6,20 @@ const Hero = () => {
   return (
     <section id="home" className="hero">
       <div className="hero-content">
-        <h3>Halo, Selamat Datang!</h3>
-        <h1 className="hero-title">Saya <span>Lunetta Latisha A.N</span></h1>
+        <h3>- Open To Work</h3>
+        <h1 className="hero-title">Saya <span>Lunetta Latisha Adzrallya Nugraha</span></h1>
         <p className="hero-description">
-          Seorang pengembang web antusias yang bersemangat dalam menciptakan antarmuka pengguna yang indah, interaktif, dan responsif.
-          Ini adalah portofolio tugas Praktikum Kelas XI saya.
+          Saya merupakan siswa Front-end  Developer di SMK Wikrama Bogor yang memiliki minat besar di bidang teknologi informasi. Saya senang mempelajari cara kerja aplikasi serta proses pembuatan sistem digital.
         </p>
         <div className="hero-buttons">
-          <a href="#contact" className="btn">Hubungi Saya</a>
-          <a href="#gallery" className="btn btn-secondary">Lihat Karya</a>
+          <a href="#contact" className="btn" onClick={(e) => {
+            const contactSec = document.getElementById('contact');
+            if (contactSec) {
+              e.preventDefault();
+              contactSec.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}>Hubungi Saya</a>
+          <Link to="/projects" className="btn btn-secondary">Lihat Karya</Link>
         </div>
       </div>
       <div className="hero-image">

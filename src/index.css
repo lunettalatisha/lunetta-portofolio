@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --primary: #6c5ce7; /* Purple */
-  --secondary: #fdcb6e; /* Yellow */
-  --bg-color: #fdfdfd; /* White/Off-white */
-  --text-dark: #2d3436;
-  --text-light: #636e72;
+  --primary: #7c3aed; /* Vibrant Purple */
+  --primary-light: #8b5cf6;
+  --secondary: #fbbf24; /* Rich Amber/Yellow */
+  --secondary-light: #fcd34d;
+  --bg-color: #f8fafc; /* Sleek off-white */
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --text-dark: #1e293b;
+  --text-light: #64748b;
   --white: #ffffff;
+  --base-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
 }
 
 * {
@@ -16,7 +21,7 @@
 }
 
 html {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Outfit', sans-serif;
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   color: var(--text-dark);
@@ -24,12 +29,14 @@ html {
 
 body {
   overflow-x: hidden;
+  background-color: var(--bg-color);
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ul {
@@ -38,55 +45,90 @@ ul {
 
 section {
   padding: 100px 10%;
+  position: relative;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: var(--primary);
-  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 3.5rem;
+  color: var(--text-dark);
+  font-weight: 800;
   position: relative;
+  letter-spacing: -0.02em;
+}
+
+.section-title span {
+  color: var(--primary);
 }
 
 .section-title::after {
   content: '';
   position: absolute;
   width: 60px;
-  height: 4px;
-  background-color: var(--secondary);
-  bottom: -10px;
+  height: 6px;
+  background: var(--primary);
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 12px 28px;
-  background-color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: var(--primary);
   color: var(--white);
-  border-radius: 30px;
+  border-radius: 50px;
   font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid var(--primary);
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--primary-light);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: var(--primary);
+  color: var(--white);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+  animation: pulseGlow 1.5s infinite;
+}
+
+.btn:hover::before {
+  opacity: 1;
 }
 
 .btn-secondary {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-  color: var(--text-dark);
+  background: var(--secondary);
+  color: #78350f;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.btn-secondary::before {
+  background: var(--secondary-light);
 }
 
 .btn-secondary:hover {
-  background-color: transparent;
-  color: var(--secondary);
+  color: #78350f;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.5);
+  animation: pulseGlowSecondary 1.5s infinite;
 }
 
 /* Base App Container */
@@ -96,12 +138,30 @@ section {
   min-height: 100vh;
 }
 
+/* Global Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+@keyframes pulseGlowSecondary {
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(251, 191, 36, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   section {
     padding: 80px 5%;
   }
   .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }

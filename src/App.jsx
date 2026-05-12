@@ -1,26 +1,31 @@
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SkillsEducation from './components/SkillsEducation';
-import Gallery from './components/Gallery';
+import Projects from './components/Projects';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
-import assets from './assets';    
-import profile from './assets/profile.jpg';
-import project1 from './assets/project1.jpg';
-import project2 from './assets/project2.jpg';
-import certificate1 from './assets/certificate1.jpg';
-import certificate2 from './assets/certificate2.jpg';
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <main>
-        <Hero />
-        <SkillsEducation />
-        <Gallery />
-      </main>
-      <Contact />
-    </div>
+    <Router>
+      <div className="app">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <SkillsEducation />
+                <Contact />
+              </>
+            } />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/certificates" element={<Certificates />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

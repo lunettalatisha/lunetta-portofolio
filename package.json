@@ -1,7 +1,7 @@
 {
   "name": "porto-project",
   "private": true,
-  "homepage": "https://lunettalatisha.github.io/lunetta-porto-petik",
+  "homepage": "https://lunettalatisha.github.io/lunetta-portofolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
